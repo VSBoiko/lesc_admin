@@ -35,7 +35,7 @@ class Meeting(models.Model):
 
 class Ticket(models.Model):
     meeting_id = models.ForeignKey(Meeting, on_delete=models.CASCADE, verbose_name="Встреча",
-                                   help_text="Встреча из таблицы 'Встречи'")
+                                   help_text="Встреча из таблицы 'Встречи'", related_name='tickets')
     price = models.FloatField(verbose_name="Стоимость", help_text="Цена этого билета на выбранную встречу")
 
     def __str__(self):
@@ -70,9 +70,9 @@ class Member(models.Model):
 
 class Booking(models.Model):
     ticket_id = models.ForeignKey(Ticket, on_delete=models.CASCADE, verbose_name="Билет на встречу",
-                                  help_text="Билет на встречу из таблицы 'Билеты на встречи'")
+                                  help_text="Билет на встречу из таблицы 'Билеты на встречи'", related_name='booking')
     member_id = models.ForeignKey(Member, on_delete=models.CASCADE, verbose_name="Участник",
-                                  help_text="Участник встречи из таблицы 'Участники'")
+                                  help_text="Участник встречи из таблицы 'Участники'", related_name='bookings')
     is_paid = models.BooleanField(default=False, verbose_name="Статус оплаты",
                                   help_text="Участник оплатил билет на встречу или нет")
     date_time = models.DateTimeField(default=timezone.now)

@@ -44,15 +44,15 @@ class TicketAdmin(admin.ModelAdmin):
 
 
 class PlaceAdmin(admin.ModelAdmin):
-    list_display = ['name', 'address', 'link', 'description', ]
+    list_display = ["id", 'name', 'address', 'link', 'description', ]
 
 
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ['tg_id', 'login', 'name', 'surname', ]
+    list_display = ["id", 'tg_id', 'login', 'name', 'surname', ]
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['ticket_id', 'member_id', 'is_paid', 'date_time', ]
+    list_display = ["id", 'ticket_id', 'member_id', 'is_paid', 'date_time', ]
 
 
 admin.site.register(Member, MemberAdmin)
