@@ -18,3 +18,12 @@ git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA
 ```shell
 git push origin master --force
 ```
+
+### copy file from local to remote
+```shell
+scp /path/to/file/ user@remote_ip:/path/to/dir/
+```
+### move file to other dir
+```shell
+mv /path/to/file/ /path/to/new/dir/
+```
