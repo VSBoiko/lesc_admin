@@ -142,3 +142,22 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'translations', 'locale'),
 )
+
+SECURE_HSTS_SECONDS = 3600  # 1 hour
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+USE_SSL = os.getenv("USE_SSL") == 'True'
+if not USE_SSL:
+    SECURE_PROXY_SSL_HEADER = None
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+else:
+    # (security.W008)
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_SSL_REDIRECT = True
+    # (security.W012)
+    SESSION_COOKIE_SECURE = True
+    # (security.W016)
+    CSRF_COOKIE_SECURE = True
