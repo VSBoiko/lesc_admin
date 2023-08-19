@@ -4,7 +4,9 @@ docker does`t work yet
 
 ## project notes
 ### delete file from git history
-* install ```git-filter-repo```
+[original article](https://docs.github.com/ru/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository
+) 
+* install ```git-filter-repo``` (Fedora`s command)
 ```shell
 sudo dnf install git-filter-repo
 ```
