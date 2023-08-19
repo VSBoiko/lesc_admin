@@ -4,3 +4,4 @@ psycopg2-binary==2.9.7
 sqlparse==0.4.4
 DateTime~=5.2
 djangorestframework~=3.14.0
+python-dotenv~=1.0.0
