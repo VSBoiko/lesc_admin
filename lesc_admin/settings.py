@@ -143,6 +143,7 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'translations', 'locale'),
 )
 
+
 SECURE_HSTS_SECONDS = 3600  # 1 hour
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
@@ -161,3 +162,5 @@ else:
     SESSION_COOKIE_SECURE = True
     # (security.W016)
     CSRF_COOKIE_SECURE = True
+
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
