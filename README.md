@@ -31,3 +31,6 @@ mv /path/to/file/ /path/to/new/dir/
 ```shell
 ALTER USER user_name WITH PASSWORD 'new_password';
 ```
+
+### article on resolving django security warnings
+ [link](https://www.toptal.com/django/secure-django-heroku-pydantic-tutorial-part-4)

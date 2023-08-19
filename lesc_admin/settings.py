@@ -142,3 +142,5 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'translations', 'locale'),
 )
+
+allowed_hosts = os.getenv("ALLOWED_HOSTS").split(",")
