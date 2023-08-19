@@ -27,3 +27,7 @@ scp /path/to/file/ user@remote_ip:/path/to/dir/
 ```shell
 mv /path/to/file/ /path/to/new/dir/
 ```
+### change ph user`s password
+```shell
+ALTER USER user_name WITH PASSWORD 'new_password';
+```
