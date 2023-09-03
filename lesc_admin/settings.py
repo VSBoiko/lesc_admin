@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django_filters',
 
     # local
     'accounts',
@@ -165,3 +166,9 @@ else:
     CSRF_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}

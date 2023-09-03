@@ -20,7 +20,7 @@ class Place(models.Model):
 class Meeting(models.Model):
     name = models.CharField(max_length=200, verbose_name="Название", help_text="Название встречи")
     date_time = models.DateTimeField(verbose_name="Дата", help_text="Дата встречи")
-    place_id = models.ForeignKey(Place, on_delete=models.SET_DEFAULT, default=None, verbose_name="Место",
+    place_id = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True, verbose_name="Место",
                                  help_text="Место встречи из таблицы 'Места для встреч'")
     can_be_booked = models.BooleanField(default=False, verbose_name="Можно бронировать",
                                         help_text="Встреча доступна для бронирования участниками")
@@ -34,7 +34,7 @@ class Meeting(models.Model):
 
 
 class Ticket(models.Model):
-    meeting_id = models.ForeignKey(Meeting, on_delete=models.CASCADE, verbose_name="Встреча",
+    meeting_id = models.ForeignKey(Meeting, on_delete=models.SET_NULL, null=True, verbose_name="Встреча",
                                    help_text="Встреча из таблицы 'Встречи'", related_name='tickets')
     price = models.FloatField(verbose_name="Стоимость", help_text="Цена этого билета на выбранную встречу")
 
@@ -69,9 +69,9 @@ class Member(models.Model):
 
 
 class Booking(models.Model):
-    ticket_id = models.ForeignKey(Ticket, on_delete=models.CASCADE, verbose_name="Билет на встречу",
+    ticket_id = models.ForeignKey(Ticket, on_delete=models.SET_NULL, null=True, verbose_name="Билет на встречу",
                                   help_text="Билет на встречу из таблицы 'Билеты на встречи'", related_name='booking')
-    member_id = models.ForeignKey(Member, on_delete=models.CASCADE, verbose_name="Участник",
+    member_id = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True, verbose_name="Участник",
                                   help_text="Участник встречи из таблицы 'Участники'", related_name='bookings')
     is_paid = models.BooleanField(default=False, verbose_name="Статус оплаты",
                                   help_text="Участник оплатил билет на встречу или нет")
