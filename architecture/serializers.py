@@ -34,10 +34,11 @@ class MeetingSerializerBase(serializers.ModelSerializer):
 
 class BookingSerializer(serializers.ModelSerializer):
     member = MemberSerializerBase(source='member_id', read_only=True)
+    ticket = TicketSerializerBase(source='ticket_id', read_only=True)
 
     class Meta:
         model = Booking
-        fields = ["pk", 'is_paid', 'date_time', 'member']
+        fields = ["pk", 'is_paid', 'date_time', 'member', 'ticket']
 
 
 class MemberSerializer(serializers.ModelSerializer):

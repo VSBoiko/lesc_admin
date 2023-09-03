@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django_filters import rest_framework as filters
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -66,7 +67,15 @@ class GetBookingsView(ModelViewSet):
     filterset_class = BookingFilter
 
     def create(self, request, *args, **kwargs):
-        new_obj = Booking.objects.create(**request.data)
+        ticket = get_object_or_404(Ticket, pk=request.data.get("ticket_id"))
+        member = get_object_or_404(Member, pk=request.data.get("member_id"))
+        params = {
+            "date_time": request.data.get("date_time"),
+            "is_paid": request.data.get("is_paid"),
+            "ticket_id": ticket,
+            "member_id": member,
+        }
+        new_obj = Booking.objects.create(**params)
         new_obj.save()
         serializer = self.serializer_class(new_obj)
         return Response(serializer.data)

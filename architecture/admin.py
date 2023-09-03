@@ -5,6 +5,7 @@ import copy
 
 class MeetingAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "place_id", "date_time", "can_be_booked", ]
+    list_display_links = ["id", "name", ]
     ordering = ['-date_time']
     actions = ['make_booked_true', 'make_booked_false', 'copy_meetings']
 
@@ -27,6 +28,7 @@ class MeetingAdmin(admin.ModelAdmin):
 
 class TicketAdmin(admin.ModelAdmin):
     list_display = ["id", "meeting_id", "price", ]
+    list_display_links = ["id", "meeting_id", ]
     order = ['-meeting_id']
     actions = ['copy_tickets', 'copy_tickets_four_times']
 
@@ -45,14 +47,17 @@ class TicketAdmin(admin.ModelAdmin):
 
 class PlaceAdmin(admin.ModelAdmin):
     list_display = ["id", 'name', 'address', 'link', 'description', ]
+    list_display_links = ["id", "name", ]
 
 
 class MemberAdmin(admin.ModelAdmin):
     list_display = ["id", 'tg_id', 'login', 'name', 'surname', ]
+    list_display_links = ["id", "tg_id", ]
 
 
 class BookingAdmin(admin.ModelAdmin):
     list_display = ["id", 'ticket_id', 'member_id', 'is_paid', 'date_time', ]
+    list_display_links = ["id", "ticket_id", ]
 
 
 admin.site.register(Member, MemberAdmin)
