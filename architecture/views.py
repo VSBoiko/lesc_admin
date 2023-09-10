@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django_filters import rest_framework as filters
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -79,3 +80,8 @@ class GetBookingsView(ModelViewSet):
         new_obj.save()
         serializer = self.serializer_class(new_obj)
         return Response(serializer.data)
+
+    def remove(self, request, *args, **kwargs):
+        booking = get_object_or_404(Booking, pk=request.data.get("pk"))
+        booking.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
