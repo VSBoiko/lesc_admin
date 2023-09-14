@@ -75,7 +75,9 @@ class Booking(models.Model):
     member_id = models.ForeignKey(Member, on_delete=models.SET_NULL, null=True, verbose_name="Участник",
                                   help_text="Участник встречи из таблицы 'Участники'", related_name='bookings')
     is_paid = models.BooleanField(default=False, verbose_name="Статус оплаты",
-                                  help_text="Участник оплатил билет на встречу или нет")
+                                  help_text="Мы подтвердили оплату билета на встречу или нет")
+    user_confirm_paid = models.BooleanField(default=False, verbose_name="Участник подтвердил оплату",
+                                  help_text="Участник подтвердил оплату билета на встречу или нет")
     date_time = models.DateTimeField(default=timezone.now)
 
     class Meta:

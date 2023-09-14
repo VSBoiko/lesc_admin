@@ -56,7 +56,7 @@ class MemberAdmin(admin.ModelAdmin):
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ["id", 'ticket_id', 'member_id', 'is_paid', 'date_time', ]
+    list_display = ["id", 'ticket_id', 'member_id', 'is_paid', 'date_time', 'user_confirm_paid', ]
     list_display_links = ["id", "ticket_id", ]
 
 

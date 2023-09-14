@@ -17,4 +17,4 @@ class BookingFilter(filters.FilterSet):
 
     class Meta:
         model = Booking
-        fields = ['id', 'is_paid', 'member_id', 'date_time']
+        fields = ['id', 'is_paid', 'member_id', 'date_time', 'user_confirm_paid']

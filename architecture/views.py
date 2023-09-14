@@ -73,6 +73,7 @@ class GetBookingsView(ModelViewSet):
         params = {
             "date_time": request.data.get("date_time"),
             "is_paid": request.data.get("is_paid"),
+            "user_confirm_paid": request.data.get("user_confirm_paid"),
             "ticket_id": ticket,
             "member_id": member,
         }
@@ -92,6 +93,8 @@ class GetBookingsView(ModelViewSet):
             booking.date_time = request.data.get("date_time")
         if "is_paid" in request.data:
             booking.is_paid = request.data.get("is_paid")
+        if "user_confirm_paid" in request.data:
+            booking.user_confirm_paid = request.data.get("user_confirm_paid")
 
         booking.save()
 
