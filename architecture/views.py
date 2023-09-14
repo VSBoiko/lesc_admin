@@ -85,3 +85,15 @@ class GetBookingsView(ModelViewSet):
         booking = get_object_or_404(Booking, pk=request.data.get("pk"))
         booking.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def update(self, request, *args, **kwargs):
+        booking = get_object_or_404(Booking, pk=request.data.get("pk"))
+        if "date_time" in request.data:
+            booking.date_time = request.data.get("date_time")
+        if "is_paid" in request.data:
+            booking.is_paid = request.data.get("is_paid")
+
+        booking.save()
+
+        serializer = self.serializer_class(booking)
+        return Response(serializer.data)

@@ -7,6 +7,7 @@ methods = {
     "get": "list",
     "post": "create",
     "delete": "remove",
+    "patch": "update",
 }
 
 urlpatterns = [

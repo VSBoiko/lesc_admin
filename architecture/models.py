@@ -48,7 +48,8 @@ class Ticket(models.Model):
 
 class Member(models.Model):
     tg_id = models.BigIntegerField(verbose_name="Telegram ID", help_text="ID участника в Telegram")
-    login = models.CharField(max_length=200, verbose_name="Логин", help_text="Логин участника в Telegram")
+    login = models.CharField(max_length=200, verbose_name="Логин", default=None, null=True, blank=True,
+                             help_text="Логин участника в Telegram")
     name = models.CharField(max_length=200, default=None, null=True, blank=True, verbose_name="Имя",
                             help_text="Имя участника в Telegram")
     surname = models.CharField(max_length=200, default=None, null=True, blank=True, verbose_name="Фамилия",
